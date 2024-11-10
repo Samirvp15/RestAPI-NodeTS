@@ -3,22 +3,22 @@ import { Column, DataType, Default, Model, Sequelize, Table } from "sequelize-ty
     tableName: 'products'
 })
 
-class Product extends Model{
+class Product extends Model {
     @Column({
         type: DataType.STRING(100)
     })
-    name: string = '';
+    declare name: string
 
     @Column({
         type: DataType.FLOAT
     })
-    price: number = 0.0;
+    declare price: number
 
     @Default(true)
     @Column({
         type: DataType.BOOLEAN
     })
-    availability: boolean = false;
+    declare availability: boolean
 }
 export default Product
 
