@@ -9,7 +9,6 @@ async function connectDB() {
     try {
         await db.authenticate()
         db.sync()
-        console.log('conexion a db exitosa')
     } catch (error) {
         console.log(error)
     }
