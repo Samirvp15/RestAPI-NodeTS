@@ -7,7 +7,7 @@
     "dev": "tsnd --respawn src/index.ts",
     "build": "rimraf ./dist && tsc",
     "start": "npm run build && node dist/index.js",
-    "test": "jest --detectOpenHandles",
+    "test:coverage": "npm run pretest && jest --detectOpenHandles --coverage",
     "pretest": "ts-node ./src/data --clear"
   },
   "author": "Samir Alexander Vergara Pastor",
