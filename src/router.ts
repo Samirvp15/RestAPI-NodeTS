@@ -29,6 +29,7 @@ router.post('/',
     createProduct)
 
 router.put('/:id',
+    param('id').isInt().withMessage('ID no valido'),
     //Validacion
     body('price').
         isNumeric().withMessage('Valor no valido').
