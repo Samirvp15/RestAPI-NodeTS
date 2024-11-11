@@ -1,6 +1,8 @@
 import express from 'express'
 import router from './router';
+import swaggerUi  from 'swagger-ui-express';
 import db from './config/db';
+import swaggerSpec from './config/swagger';
 
 
 //Conectar a db
@@ -23,9 +25,8 @@ server.use(express.json())
 
 server.use('/api/products', router)
 
-server.get('/api', (req,res)=>{
-    res.json({mgs: 'Desde API'})
-})
+//Docs
+server.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 
 export default server;
