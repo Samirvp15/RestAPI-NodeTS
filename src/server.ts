@@ -3,6 +3,7 @@ import router from './router';
 import swaggerUi  from 'swagger-ui-express';
 import db from './config/db';
 import swaggerSpec from './config/swagger';
+import cors, { CorsOptions } from 'cors';
 
 
 //Conectar a db
@@ -22,6 +23,18 @@ connectDB()
 const server = express()
 server.use(express.json())
 
+
+const corsOptions: CorsOptions = {
+    origin: function(origin, callback){
+       if(origin === process.env.FRONTEND_URL){
+        callback(null, true)
+       }else{
+        callback(new Error('Error de CORS'))
+       }
+    }
+}
+
+server.use(cors(corsOptions))
 
 server.use('/api/products', router)
 
