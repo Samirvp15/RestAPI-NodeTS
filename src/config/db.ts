@@ -3,10 +3,9 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const db = new Sequelize(process.env.DATABASE_URL!,{
-    models: [__dirname + '/../models/**/*'],
-    logging: false
+const db = new Sequelize(`${process.env.DATABASE_URL}`,{
+  //dialect: "postgres",
+  models: [__dirname + '/../models/**/*'],
+  logging: false
 })
 export default db
-
-
